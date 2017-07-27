@@ -30,4 +30,4 @@ It's recommended to use your `test` key while developing (so as to not incur cha
 
 ## License
 
-ExPhaxio free software licensed under [MIT](https://opensource.org/licenses/MIT).
+ExPhaxio free software licensed under [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0).
