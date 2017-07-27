@@ -41,7 +41,7 @@ defmodule ExPhaxio.Mixfile do
     [
       name: :ex_phaxio,
       maintainers: ["Dennis Yao"],
-      licenses: ["MIT"],
+      licenses: ["Apache 2.0"],
       links: %{"Github" => "https://github.com/bnns/ex_phaxio"}
     ]
   end
