@@ -11,4 +11,9 @@ defmodule ExPhaxio.Requests.FaxRequest do
              tags: nil,
              caller_id: nil,
              test_fail: nil]
+
+  def new_fax(attrs \\ []) do
+    struct!(%__MODULE__{}, attrs)
+  end
+
 end
