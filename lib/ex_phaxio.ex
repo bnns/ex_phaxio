@@ -94,7 +94,7 @@ defmodule ExPhaxio do
   """
   def create(%FaxRequest{} = request) do
     url = host() <> version() <> faxes_path()
-    body = Poison.encode! request
+    body = FaxRequest.form_body request
     HTTPoison.post(url, body, headers(:with_basic_auth), request_opts())
   end
   def create(_), do: {:error, "Parameter must be a FaxRequest."}

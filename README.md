@@ -19,7 +19,7 @@ config :ex_phaxio,
 ```elixir
 def deps do
   [
-    {:ex_phaxio, "~> 0.1.0"}
+    {:ex_phaxio, "~> 0.2.1"}
   ]
 end
 ```

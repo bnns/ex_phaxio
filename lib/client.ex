@@ -40,6 +40,7 @@ defmodule ExPhaxio.Client do
     iex> MyApp.UserFaxer.send_fax(to: "15554443333", file: "/path/to/fax.html")
   """
 
+  require Logger
   alias ExPhaxio.Requests.FaxRequest
 
   defmacro __using__(_config) do
@@ -53,6 +54,11 @@ defmodule ExPhaxio.Client do
 
   def send_fax(%FaxRequest{} = request) do
     with {:ok, response} <- ExPhaxio.create(request) do
+      Logger.debug """
+      Sending fax with ExPhaxio:
+
+      #{inspect request, limit: :infinity}
+      """
       response
       |> Map.get(:body)
       |> Poison.decode

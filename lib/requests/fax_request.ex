@@ -16,4 +16,11 @@ defmodule ExPhaxio.Requests.FaxRequest do
     struct!(%__MODULE__{}, attrs)
   end
 
+  def form_body(%__MODULE__{} = request) do
+    request
+    |> Map.to_list
+    |> form_body_list
+  end
+
+  defp form_body_list(list), do: {:form, list}
 end
