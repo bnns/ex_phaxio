@@ -7,7 +7,7 @@ defmodule ExPhaxio.Mixfile do
       name: "ExPhaxio",
       source_url: "https://github.com/bnns/ex_phaxio",
       description: "A simple Phaxio client.",
-      version: "0.2.0",
+      version: "0.2.1",
       elixir: "~> 1.5",
       start_permanent: Mix.env == :prod,
       deps: deps(),
@@ -26,6 +26,7 @@ defmodule ExPhaxio.Mixfile do
     [
       {:httpoison, "~> 0.12"},
       {:poison, "~> 3.1"},
+      {:credo, "~> 0.8.4", only: [:dev, :test]},
       {:ex_doc, ">= 0.0.0", only: [:dev, :test]},
     ]
   end

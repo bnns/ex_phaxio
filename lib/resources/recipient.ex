@@ -1,4 +1,7 @@
 defmodule ExPhaxio.Resources.Recipient do
+  @moduledoc """
+  The Recipient module provides a struct representing fax recipients.
+  """
   @enforce_keys ~w(phone_number status)a
   defstruct [phone_number: nil,
              status: nil,

@@ -1,5 +1,7 @@
 defmodule ExPhaxio.Resources.Paging do
-
+  @moduledoc """
+  The Paging module provides helpers for paginating requests.
+  """
   @max_per_page 1000
   @min_page 1
 

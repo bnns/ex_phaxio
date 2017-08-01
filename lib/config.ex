@@ -1,4 +1,7 @@
 defmodule ExPhaxio.Config do
+  @moduledoc """
+  Config provides setup methods for interacting with the API.
+  """
   defstruct [api_key: nil,
              api_secret: nil]
 
@@ -12,7 +15,7 @@ defmodule ExPhaxio.Config do
 
   def version, do: get(:ex_phaxio, :phaxio_version) || "v2"
 
-  def headers(), do: [{"accept", "application/json; charset=utf-8"}]
+  def headers, do: [{"accept", "application/json; charset=utf-8"}]
 
   def headers(opts) when is_list(opts), do: assign_headers([], opts)
   def headers(:with_auth) do
@@ -27,24 +30,25 @@ defmodule ExPhaxio.Config do
     assign_headers my_headers ++ headers(opt), tail
   end
 
-  # from https://gist.github.com/bitwalker/a4f73b33aea43951fe19b242d06da7b9
   def get(app, key, default \\ nil) when is_atom(app) and is_atom(key) do
-    case Application.get_env(app, key) do
-      {:system, env_var} ->
-        case System.get_env(env_var) do
-          nil -> default
-          val -> val
-        end
-      {:system, env_var, preconfigured_default} ->
-        case System.get_env(env_var) do
-          nil -> preconfigured_default
-          val -> val
-        end
-      nil ->
-        default
-      val ->
-        val
+    app
+    |> Application.get_env(key)
+    |> process_env(default)
+  end
+
+  defp process_env(nil, default), do: default
+  defp process_env({:system, env_var, fallback}, _default) do
+    case System.get_env(env_var) do
+      nil -> fallback
+      val -> val
     end
   end
+  defp process_env({:system, env_var}, default) do
+    case System.get_env(env_var) do
+      nil -> default
+      val -> val
+    end
+  end
+  defp process_env(val, _default), do: val
 
 end

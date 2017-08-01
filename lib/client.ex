@@ -54,7 +54,7 @@ defmodule ExPhaxio.Client do
 
   def send_fax(%FaxRequest{} = request) do
     with {:ok, response} <- ExPhaxio.create(request) do
-      Logger.debug """
+      Logger.info """
       Sending fax with ExPhaxio:
 
       #{inspect request, limit: :infinity}

@@ -1,4 +1,7 @@
 defmodule ExPhaxio.Resources.Fax do
+  @moduledoc """
+  The Fax module provides a struct representing a fax object.
+  """
   @enforce_keys ~w(id to_number from_number)a
   defstruct [id: nil,
              direction: nil,

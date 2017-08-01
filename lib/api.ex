@@ -1,4 +1,7 @@
 defmodule ExPhaxio.Api do
+  @moduledoc """
+  The Api module provides path helper methods to all of Phaxio's endpoints.
+  """
   def faxes_path, do: "/faxes/"
 
   def show_path(id), do: "/faxes/#{id}"
@@ -16,8 +19,7 @@ defmodule ExPhaxio.Api do
 
   def provision_path(country, area, nil), do: "/phone_numbers?country_code=#{country}&area_code=#{area}"
   def provision_path(country, area, cb_url), do: "/phone_numbers?country_code=#{country}&area_code=#{area}&callback_url=#{cb_url}"
-  def provision_path(), do: "/phone_numbers"
+  def provision_path, do: "/phone_numbers"
 
   def account_status_path, do: "/account/status"
 end
-

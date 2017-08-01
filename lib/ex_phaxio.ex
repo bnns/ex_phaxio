@@ -66,7 +66,6 @@ defmodule ExPhaxio do
     HTTPoison.get(url, headers(), opts)
   end
 
-
   @doc """
   Provision a phone number.
 
@@ -94,7 +93,7 @@ defmodule ExPhaxio do
   """
   def create(%FaxRequest{} = request) do
     url = host() <> version() <> faxes_path()
-    body = FaxRequest.form_body request
+    body = FaxRequest.to_form_body request
     HTTPoison.post(url, body, headers([:with_auth, :form]), request_opts())
   end
   def create(_), do: {:error, "Parameter must be a FaxRequest."}
@@ -133,7 +132,7 @@ defmodule ExPhaxio do
       iex> with {:ok, %HTTPoison.Response{}} <- ExPhaxio.account_status(), do: :passed
       :passed
   """
-  def account_status() do
+  def account_status do
     url = host() <> version() <> account_status_path()
     HTTPoison.get(url, headers(:with_auth), request_opts())
   end
