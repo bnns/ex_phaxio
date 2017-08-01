@@ -37,7 +37,7 @@ defmodule ExPhaxio.Client do
     end
 
     $ iex -S mix
-    iex> MyApp.UserFaxer.send_fax(to: "15554443333", file: "/path/to/fax.html")
+    iex> MyApp.UserFaxer.send_fax(to: "+15554443333", file: "/path/to/fax.html")
   """
 
   require Logger

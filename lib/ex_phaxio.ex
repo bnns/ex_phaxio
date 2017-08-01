@@ -19,7 +19,7 @@ defmodule ExPhaxio do
   """
   def show(id) do
     url = host() <> version() <> show_path(id)
-    HTTPoison.get(url, headers(:with_basic_auth), request_opts())
+    HTTPoison.get(url, headers(:with_auth), request_opts())
   end
 
   @doc """
@@ -34,7 +34,7 @@ defmodule ExPhaxio do
   """
   def show_content(id, size \\ nil) do
     url = host() <> version() <> show_content_path(id, size)
-    HTTPoison.get(url, headers(:with_basic_auth), request_opts())
+    HTTPoison.get(url, headers(:with_auth), request_opts())
   end
 
   @doc """
@@ -50,7 +50,7 @@ defmodule ExPhaxio do
   """
   def list(opts \\ []) do
     url = host() <> version() <> faxes_path()
-    HTTPoison.get(url, headers(:with_basic_auth), request_opts() ++ opts)
+    HTTPoison.get(url, headers(:with_auth), request_opts() ++ opts)
   end
 
   @doc """
@@ -77,7 +77,7 @@ defmodule ExPhaxio do
   """
   def provision_phone(country, area, cb_url \\ nil) do
     url = host() <> version() <> provision_path(country, area, cb_url)
-    HTTPoison.post(url, "", headers(:with_basic_auth), request_opts())
+    HTTPoison.post(url, "", headers(:with_auth), request_opts())
   end
 
   @doc """
@@ -95,7 +95,7 @@ defmodule ExPhaxio do
   def create(%FaxRequest{} = request) do
     url = host() <> version() <> faxes_path()
     body = FaxRequest.form_body request
-    HTTPoison.post(url, body, headers(:with_basic_auth), request_opts())
+    HTTPoison.post(url, body, headers([:with_auth, :form]), request_opts())
   end
   def create(_), do: {:error, "Parameter must be a FaxRequest."}
 
@@ -109,7 +109,7 @@ defmodule ExPhaxio do
   """
   def resend(id, cb_url \\ nil) do
     url = host() <> version() <> resend_path(id, cb_url)
-    HTTPoison.post(url, "", headers(:with_basic_auth), request_opts())
+    HTTPoison.post(url, "", headers(:with_auth), request_opts())
   end
 
   @doc """
@@ -122,7 +122,7 @@ defmodule ExPhaxio do
   """
   def cancel(id) do
     url = host() <> version() <> cancel_path(id)
-    HTTPoison.post(url, "", headers(:with_basic_auth), request_opts())
+    HTTPoison.post(url, "", headers(:with_auth), request_opts())
   end
 
   @doc """
@@ -135,6 +135,6 @@ defmodule ExPhaxio do
   """
   def account_status() do
     url = host() <> version() <> account_status_path()
-    HTTPoison.get(url, headers(:with_basic_auth), request_opts())
+    HTTPoison.get(url, headers(:with_auth), request_opts())
   end
 end

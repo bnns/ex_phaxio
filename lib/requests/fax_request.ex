@@ -19,6 +19,7 @@ defmodule ExPhaxio.Requests.FaxRequest do
   def form_body(%__MODULE__{} = request) do
     request
     |> Map.to_list
+    |> Keyword.delete(:__struct__)
     |> form_body_list
   end
 
