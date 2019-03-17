@@ -24,10 +24,10 @@ defmodule ExPhaxio.Mixfile do
 
   defp deps do
     [
-      {:httpoison, "~> 0.12"},
-      {:poison, "~> 3.1"},
-      {:credo, "~> 0.8.4", only: [:dev, :test]},
-      {:ex_doc, ">= 0.0.0", only: [:dev, :test]},
+      {:httpoison, "~> 1.5.0"},
+      {:poison, "~> 4.0.1"},
+      {:credo, "~> 1.0.3", only: [:dev, :test]},
+      {:ex_doc, ">= 0.19.3", only: [:dev, :test]},
     ]
   end
 
